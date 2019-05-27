@@ -6,18 +6,18 @@ Jenkins is an open source automation server written in Java. Jenkins helps to au
  with continuous integration and facilitating technical aspects of continuous delivery. It is a server-based system that runs in servlet containers 
  such as Apache Tomcat.
  
-#Docker 
+# Docker 
 
 Docker is a collection of interoperating software-as-a-service and platform-as-a-service offerings that employ operating-system-level virtualization 
 to cultivate development and delivery of software inside standardized software packages called containers. The software that hosts the containers 
 is called Docker Engine.
 
-#Using Jenkins with Docker
+# Using Jenkins with Docker
 First of all to use jenkins with docker, we will have to know that as we are running Jenkins inside a docker container, and we need access to docker to
 build our services images, so first of all let's build a Jenkins image with docker installed inside it. Let's check the dockerfile to 
 build this Jenkins image with docker inside, you will just have to put this file into any folder, and run the docker build command.
 
-#Dockerfile for Jenkins
+# Dockerfile for Jenkins
 ```
 from jenkins/jenkins:lts
 USER root
@@ -41,7 +41,7 @@ Now that the docker image has already been built, we can run the Jenkins in a do
 
 $ docker container run -d -p 8080:8080 -v /var/run/docker.sock:/var/run/docker.sock jenkins-docker
 
-#Building Spring Boot Application
+# Building Spring Boot Application
 The Sample application built here has the maven jar plugin, so in order to build that as a jar, we just have to do the command:
 
 $ mvn clean install
