@@ -46,3 +46,21 @@ The Sample application built here has the maven jar plugin, so in order to build
 
 $ mvn clean install
 
+#Using with AWS ECS and ECR
+
+First of all you will have to push your image to Amazon ECR, so in order to do this via command line interface, we have to have
+the aws cli installed on our computer. After that we will have to synchronize the docker login with the AWS account, with the command:
+
+$(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
+
+After that you will sync the two accounts, and are able to build and push your image. So, just build the image:
+
+$ docker build -t devops-service . 
+
+Tag you image:
+
+$ docker tag devops-service:latest $AWS_IAM_USER_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/devops-service:latest
+
+Finally run thios command for pushing the image:
+
+docker push $AWS_IAM_USER_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/devops-service:latest
