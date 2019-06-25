@@ -1,0 +1,19 @@
+{
+  "family": "devops-example",
+  "containerDefinitions": [
+    {
+      "name": "web",
+      "image": "824065353601.dkr.ecr.sa-east-1.amazonaws.com/devops-example:latest",
+      "cpu": 128,
+      "memoryReservation": 128,
+      "portMappings": [
+        {
+          "containerPort": 2222,
+          "protocol": "tcp"
+        }
+      ],
+      "command": [],
+      "essential": true
+    }
+  ]
+}

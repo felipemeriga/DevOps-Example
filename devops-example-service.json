@@ -1,0 +1,14 @@
+{
+  "cluster": "devops-cluster",
+  "serviceName": "devops-example-service",
+  "taskDefinition": "devops-example",
+  "loadBalancers": [
+    {
+      "targetGroupArn": "arn:aws:elasticloadbalancing:sa-east-1:824065353601:targetgroup/devops-example-health-check/e235c9a1eda01de5",
+      "containerName": "web",
+      "containerPort": 2222
+    }
+  ],
+  "desiredCount": 2,
+  "role": "ecsServiceRole"
+}

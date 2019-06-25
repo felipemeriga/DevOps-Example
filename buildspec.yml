@@ -1,0 +1,23 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      docker: 18
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - $(aws ecr get-login --no-include-email --region sa-east-1)
+  build:
+    commands:
+      - echo building maven project
+      - echo Build started on `date`
+      - mvn clean install
+      - echo Building the Docker image...          
+      - docker build -t devops-example:latest .
+      - docker tag devops-example:latest 824065353601.dkr.ecr.sa-east-1.amazonaws.com/devops-example:latest      
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing the Docker image...
+      - docker push 824065353601.dkr.ecr.sa-east-1.amazonaws.com/devops-example:latest
